@@ -12,7 +12,10 @@
         const payload = document.getElementById("payload").value;
         console.log("Making request with payload value:", payload);
 
-        fetch("/generate-url", {
+        // fetch("/generate-url-aes", { // aes string length = 108
+        // fetch("/generate-url-base", { // base64 string length = 76
+        fetch("/generate-url-salsa", {
+          // salsa20 string length = 88
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(payload),
