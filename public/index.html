@@ -12,7 +12,7 @@
         const payload = document.getElementById("payload").value;
         console.log("Making request with payload value:", payload);
 
-        fetch("http://localhost:5000/generate-url", {
+        fetch("/generate-url", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(payload),
