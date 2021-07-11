@@ -8,9 +8,10 @@
     <script>
       console.log("hello :)");
 
-      const payload = { email: "your@email.com", password: "secret" };
-
       const request = () => {
+        const payload = document.getElementById("payload").value;
+        console.log("Making request with payload value:", payload);
+
         fetch("http://localhost:5000/generate-url", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -23,6 +24,7 @@
           });
       };
     </script>
+
     <style>
       html,
       body {
@@ -36,13 +38,21 @@
         flex-direction: column;
       }
 
-      code {
+      textarea {
+        height: 100px;
+        width: 400px;
         margin-bottom: 1rem;
       }
     </style>
   </head>
   <body>
-    <code> payload: { email: 'your@email.com', password: 'secret' } </code>
+    <textarea id="payload" name="payload"></textarea>
     <button onclick="request()">REQUEST</button>
+
+    <script defer>
+      const default_payload = { email: "your@email.com", password: "secret" };
+      const textarea = document.getElementById("payload");
+      if (textarea) textarea.value = JSON.stringify(default_payload);
+    </script>
   </body>
 </html>
