@@ -1,4 +1,4 @@
-from flask import Flask, request
+from flask import Flask, request, send_from_directory
 from flask_cors import CORS, cross_origin
 import json
 
@@ -13,6 +13,11 @@ from Crypto.Util.Padding import pad, unpad
 app = Flask(__name__)
 cors = CORS(app)
 ENCRYPTION_KEY = "ULTRA_SECRET"
+
+
+@app.route('/')
+def index():
+    return send_from_directory('public', 'index.html')
 
 
 class AESCipher:
