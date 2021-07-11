@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      console.log("hello :)");
+
+      const payload = { email: "your@email.com", password: "secret" };
+
+      const request = () => {
+        fetch("http://localhost:5000/generate-url", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(payload),
+        })
+          .then((response) => response.text())
+          .then((data) => {
+            console.log("Response from server:", data);
+            // location.href = data;
+          });
+      };
+    </script>
+    <style>
+      html,
+      body {
+        height: 100%;
+      }
+
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+      }
+
+      code {
+        margin-bottom: 1rem;
+      }
+    </style>
+  </head>
+  <body>
+    <code> payload: { email: 'your@email.com', password: 'secret' } </code>
+    <button onclick="request()">REQUEST</button>
+  </body>
+</html>
